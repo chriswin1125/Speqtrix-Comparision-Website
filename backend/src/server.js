@@ -31,19 +31,39 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Root friendly welcome
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Welcome to COMPARELY - Premium Electronics Comparison Engine API',
-    endpoints: {
-      health: '/api/health',
-      products: '/api/products',
-      search: '/api/products/search?q={query}',
-      categories: '/api/products/categories',
-      compare: '/api/compare?ids={id1},{id2}'
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const frontendDist = path.join(__dirname, '../../frontend/dist');
+
+// Serve static frontend assets if built
+if (fs.existsSync(frontendDist)) {
+  console.log(`[Server] Serving production frontend build from ${frontendDist}`);
+  app.use(express.static(frontendDist));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
     }
+    res.sendFile(path.join(frontendDist, 'index.html'));
   });
-});
+} else {
+  // Root friendly welcome if frontend is not embedded
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'Welcome to COMPARELY - Premium Electronics Comparison Engine API',
+      endpoints: {
+        health: '/api/health',
+        products: '/api/products',
+        search: '/api/products/search?q={query}',
+        categories: '/api/products/categories',
+        compare: '/api/compare?ids={id1},{id2}'
+      }
+    });
+  });
+}
 
 // Start Server
 const startServer = async () => {

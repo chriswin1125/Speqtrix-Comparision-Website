@@ -1,0 +1,22 @@
+{
+  "name": "comparely-platform",
+  "version": "1.0.0",
+  "description": "COMPARELY — Precision Electronics Comparison Platform",
+  "type": "module",
+  "scripts": {
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "start": "node backend/src/server.js",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev"
+  },
+  "keywords": [
+    "electronics",
+    "comparison",
+    "benchmark",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "chriswin1125",
+  "license": "ISC"
+}
