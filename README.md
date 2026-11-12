@@ -7,9 +7,8 @@
 
 ### 🌐 Live Deployment & Dashboard
 - **Live Platform Dashboard**: [https://speqtrix.vercel.app](https://speqtrix.vercel.app)
-- **Live Backend API**: [https://comparely-comparision-website.onrender.com](https://comparely-comparision-website.onrender.com)
-- **Database Engine**: MongoDB Atlas Cloud Cluster (`cluster0.kvgihmd.mongodb.net`)
-- **Connection URI**: `mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/`
+- **Live Backend API**: [https://speqtrix-comparision-website.onrender.com](https://speqtrix-comparision-website.onrender.com)
+- **Database Engine**: MongoDB Atlas Cloud Cluster
 - **Catalog Scale**: 950+ verified electronics & smartphone models in Indian Rupee (**₹ INR**) format
 
 ---
@@ -89,12 +88,12 @@ Specifications are evaluated using dynamic, domain-specific rules:
 ### Backend (`backend/.env`)
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/
+MONGODB_URI=<your-mongodb-atlas-uri>
 ```
 
 ### Frontend (`frontend/.env` or Vercel Environment Variables)
 ```env
-VITE_API_URL=https://comparely-comparision-website.onrender.com/api
+VITE_API_URL=https://speqtrix-comparision-website.onrender.com/api
 ```
 
 ---

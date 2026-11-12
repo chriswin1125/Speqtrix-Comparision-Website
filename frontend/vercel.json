@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://comparely-comparision-website.onrender.com/api/$1"
+      "destination": "https://speqtrix-comparision-website.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",

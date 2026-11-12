@@ -10,7 +10,7 @@ const getApiBase = () => {
   // If running in production on Vercel or external host without env var configured
   if (import.meta.env.PROD && typeof window !== 'undefined') {
     if (window.location.hostname.includes('vercel.app')) {
-      return 'https://comparely-comparision-website.onrender.com/api';
+      return 'https://speqtrix-comparision-website.onrender.com/api';
     }
   }
   
