@@ -33,17 +33,17 @@ export const HeroSection = ({ onOpenSearch }) => {
   };
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28">
+    <section className="relative overflow-hidden pt-10 pb-16 sm:pt-24 sm:pb-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         {/* Apple-style minimalist pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] text-xs font-semibold tracking-wider text-neutral-800 dark:text-neutral-200 shadow-subtle mb-6 uppercase">
+        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] text-[10px] sm:text-xs font-semibold tracking-wider text-neutral-800 dark:text-neutral-200 shadow-subtle mb-4 sm:mb-6 uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white" />
           <span>SPEQTRIX • Precision Hardware Intelligence</span>
         </div>
 
         {/* Hero Title with Apple Typography */}
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black dark:text-white leading-[1.05]">
+        <h1 className="text-3xl sm:text-6xl lg:text-8xl font-bold tracking-tight text-black dark:text-white leading-[1.08] sm:leading-[1.05]">
           Smart Specifications. <br />
           <span className="text-neutral-400 dark:text-neutral-500 font-light">
             Smarter Decisions.
@@ -51,12 +51,12 @@ export const HeroSection = ({ onOpenSearch }) => {
         </h1>
 
         {/* Supporting description */}
-        <p className="mt-6 text-base sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed font-normal">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed font-normal">
           Evaluate flagship smartphones, laptops, 4K OLED TVs, inverter ACs, wearables, and consoles side-by-side with dynamic 3-way indicators and empirical hardware benchmarking.
         </p>
 
         {/* Apple-style Broader Search Bar */}
-        <div className="mt-10 max-w-3xl sm:max-w-4xl mx-auto relative">
+        <div className="mt-6 sm:mt-10 max-w-3xl sm:max-w-4xl mx-auto relative">
           <form 
             onSubmit={handleSearchSubmit}
             className={`relative flex items-center bg-white dark:bg-neutral-900 rounded-full border transition-all duration-200 shadow-premium ${
@@ -65,7 +65,7 @@ export const HeroSection = ({ onOpenSearch }) => {
                 : 'border-black/[0.1] dark:border-white/[0.1] hover:border-black/20 dark:hover:border-white/20'
             }`}
           >
-            <div className="pl-5 text-neutral-400">
+            <div className="pl-4 sm:pl-5 text-neutral-400">
               <Search className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
             </div>
             
@@ -76,12 +76,12 @@ export const HeroSection = ({ onOpenSearch }) => {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setTimeout(() => setIsFocused(false), 200)}
               placeholder="Search by category, brand, model number..."
-              className="w-full py-4 pl-3.5 pr-28 text-sm sm:text-base font-normal bg-transparent text-black dark:text-white placeholder:text-neutral-400 focus:outline-none"
+              className="w-full py-3 sm:py-4 pl-2.5 sm:pl-3.5 pr-20 sm:pr-28 text-xs sm:text-base font-normal bg-transparent text-black dark:text-white placeholder:text-neutral-400 focus:outline-none"
             />
 
             <button
               type="submit"
-              className="absolute right-2 px-5 py-2.5 rounded-full bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs sm:text-sm font-semibold transition-all hover:scale-[1.02] flex items-center gap-1.5"
+              className="absolute right-1.5 sm:right-2 px-3.5 sm:px-5 py-1.5 sm:py-2.5 rounded-full bg-black hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs sm:text-sm font-semibold transition-all hover:scale-[1.02] flex items-center gap-1 sm:gap-1.5"
             >
               <span>Search</span>
               <ArrowRight className="w-3.5 h-3.5" />

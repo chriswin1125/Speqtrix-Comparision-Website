@@ -99,21 +99,21 @@ export const SearchModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-12 sm:pt-20 px-4 bg-black/40 dark:bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-3 sm:pt-20 px-2 sm:px-4 bg-black/40 dark:bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
       <div 
-        className="relative w-full max-w-3xl rounded-3xl bg-white dark:bg-neutral-900 border border-black/[0.1] dark:border-white/[0.1] shadow-floating overflow-hidden flex flex-col max-h-[85vh]"
+        className="relative w-full max-w-3xl rounded-2xl sm:rounded-3xl bg-white dark:bg-neutral-900 border border-black/[0.1] dark:border-white/[0.1] shadow-floating overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Header Input */}
-        <div className="p-4 sm:p-5 border-b border-black/[0.06] dark:border-white/[0.06] flex items-center gap-3">
-          <Search className="w-5 h-5 text-neutral-400 shrink-0" />
+        <div className="p-3.5 sm:p-5 border-b border-black/[0.06] dark:border-white/[0.06] flex items-center gap-2.5 sm:gap-3">
+          <Search className="w-4 sm:w-5 h-4 sm:h-5 text-neutral-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by category, brand, model, series, or keywords..."
-            className="flex-1 bg-transparent text-sm sm:text-base font-normal text-black dark:text-white placeholder:text-neutral-400 focus:outline-none"
+            placeholder="Search category, brand, model, series..."
+            className="flex-1 bg-transparent text-xs sm:text-base font-normal text-black dark:text-white placeholder:text-neutral-400 focus:outline-none"
           />
           {query && (
             <button
@@ -127,15 +127,15 @@ export const SearchModal = ({ isOpen, onClose }) => {
             onClick={onClose}
             className="p-1.5 rounded-lg text-neutral-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 sm:w-5 h-4 sm:h-5" />
           </button>
         </div>
 
         {/* Filter Toolbar: Categories & Brands */}
-        <div className="px-5 py-3 bg-[#f5f5f7] dark:bg-[#161618] border-b border-black/[0.06] dark:border-white/[0.06] flex flex-wrap items-center gap-2 text-xs">
+        <div className="px-3 sm:px-5 py-2 sm:py-3 bg-[#f5f5f7] dark:bg-[#161618] border-b border-black/[0.06] dark:border-white/[0.06] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs overflow-x-auto no-scrollbar touch-scroll">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-3 py-1 rounded-full font-medium transition-all ${
+            className={`px-2.5 sm:px-3 py-1 rounded-full font-medium shrink-0 transition-all ${
               selectedCategory === 'all'
                 ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
                 : 'text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white'

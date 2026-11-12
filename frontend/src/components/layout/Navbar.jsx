@@ -87,19 +87,19 @@ export const Navbar = ({ onOpenSearch }) => {
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Constant Non-Clickable Compare Status Pill */}
+            {/* Constant Non-Clickable Compare Status Pill - visible on mobile too */}
             <div 
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.03] dark:bg-white/[0.05] text-neutral-600 dark:text-neutral-400 text-xs font-semibold cursor-default select-none shadow-subtle"
+              className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.03] dark:bg-white/[0.05] text-neutral-600 dark:text-neutral-400 text-[11px] sm:text-xs font-semibold cursor-default select-none shadow-subtle"
               title="Current items in comparison matrix"
             >
-              <Scale className="w-3.5 h-3.5 text-neutral-400" />
+              <Scale className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-neutral-400" />
               <span>Compare ({compareList.length})</span>
             </div>
 
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-full border border-black/10 dark:border-white/10 bg-white/60 dark:bg-neutral-900/60 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all shadow-subtle"
+              className="p-2 sm:p-2.5 rounded-full border border-black/10 dark:border-white/10 bg-white/60 dark:bg-neutral-900/60 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all shadow-subtle"
               aria-label="Toggle light/dark theme"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-neutral-200" /> : <Moon className="w-4 h-4 text-neutral-800" />}
@@ -117,22 +117,34 @@ export const Navbar = ({ onOpenSearch }) => {
 
         {/* Mobile dropdown */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-black/[0.08] dark:border-white/[0.08] space-y-2">
+          <div className="lg:hidden py-4 border-t border-black/[0.08] dark:border-white/[0.08] space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-150">
             <Link
               to="/catalog"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5"
+              className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                isActive('/catalog')
+                  ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
+                  : 'hover:bg-black/5 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300'
+              }`}
             >
               Explore Products
             </Link>
             <Link
               to="/compare"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5"
+              className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                isActive('/compare')
+                  ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
+                  : 'hover:bg-black/5 dark:hover:bg-white/5 text-neutral-700 dark:text-neutral-300'
+              }`}
             >
               <span>Comparison Matrix</span>
-              <span className="px-2 py-0.5 text-xs font-semibold text-neutral-500">
-                ({compareList.length})
+              <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                isActive('/compare')
+                  ? 'bg-white/20 dark:bg-black/20 text-white dark:text-black'
+                  : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-500'
+              }`}>
+                {compareList.length} items
               </span>
             </Link>
           </div>

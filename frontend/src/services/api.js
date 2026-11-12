@@ -1,4 +1,23 @@
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+// Determine API base URL
+// In production on Vercel or other hosts, use VITE_API_URL or fallback to the live Render backend
+const getApiBase = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && envUrl.trim() !== '') {
+    const trimmed = envUrl.trim().replace(/\/+$/, '');
+    return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+  }
+  
+  // If running in production on Vercel or external host without env var configured
+  if (import.meta.env.PROD && typeof window !== 'undefined') {
+    if (window.location.hostname.includes('vercel.app')) {
+      return 'https://comparely-comparision-website.onrender.com/api';
+    }
+  }
+  
+  return '/api';
+};
+
+const API_BASE = getApiBase();
 
 export const api = {
   async getProducts(params = {}) {

@@ -8,36 +8,36 @@ export const ComparisonSummary = ({ verdict, productSummaries }) => {
   if (!verdict) return null;
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] shadow-subtle mb-10">
+    <div className="p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] shadow-subtle mb-6 sm:mb-10">
       
       {/* Header & Verdict */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.06] dark:border-white/[0.06]">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 pb-5 sm:pb-6 border-b border-black/[0.06] dark:border-white/[0.06]">
         <div>
-          <div className="flex items-center gap-1.5 text-neutral-400 font-medium text-xs tracking-wider uppercase mb-1.5">
+          <div className="flex items-center gap-1.5 text-neutral-400 font-medium text-[11px] sm:text-xs tracking-wider uppercase mb-1">
             <span>Hardware Assessment</span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-black dark:text-white tracking-tight">
+          <h2 className="text-lg sm:text-2xl font-bold text-black dark:text-white tracking-tight">
             Comparison Verdict
           </h2>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1 max-w-3xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-1 max-w-3xl leading-relaxed">
             {verdict.overallVerdict}
           </p>
         </div>
 
-        {/* Advantage Score Cards */}
-        <div className="flex flex-wrap items-center gap-2.5">
+        {/* Advantage Score Cards - 2 column grid on mobile */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 sm:gap-2.5">
           {productSummaries.map((p) => (
             <div
               key={p.id}
-              className="p-3.5 rounded-2xl bg-neutral-50 dark:bg-neutral-800/60 border border-black/[0.06] dark:border-white/[0.06] min-w-[130px]"
+              className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-neutral-50 dark:bg-neutral-800/60 border border-black/[0.06] dark:border-white/[0.06] min-w-0 sm:min-w-[130px]"
             >
-              <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider truncate">
+              <div className="text-[9px] sm:text-[10px] font-bold text-neutral-400 uppercase tracking-wider truncate">
                 {p.brand}
               </div>
               <div className="text-xs sm:text-sm font-bold text-black dark:text-white truncate">
                 {p.name.split(' ').slice(0, 3).join(' ')}
               </div>
-              <div className="mt-2 flex items-center justify-between text-xs">
+              <div className="mt-1.5 sm:mt-2 flex items-center justify-between text-[11px] sm:text-xs">
                 <span className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-0.5">
                   🟢 +{p.advantagesCount}
                 </span>

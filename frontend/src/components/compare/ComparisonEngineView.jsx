@@ -151,25 +151,25 @@ export const ComparisonEngineView = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 animate-in fade-in duration-150">
       
       {/* Top Action Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
-          <div className="flex items-center gap-1.5 text-neutral-500 font-medium text-xs tracking-wider uppercase mb-1">
+          <div className="flex items-center gap-1.5 text-neutral-500 font-medium text-[11px] sm:text-xs tracking-wider uppercase mb-1">
             <Lock className="w-3.5 h-3.5 text-neutral-400" />
             <span>Category Locked: {activeCategory?.replace('-', ' ').toUpperCase()}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white tracking-tight">
+          <h1 className="text-2xl sm:text-4xl font-bold text-black dark:text-white tracking-tight">
             Comparison Matrix
           </h1>
-          <p className="text-xs sm:text-sm text-neutral-500 mt-0.5">
+          <p className="text-[11px] sm:text-sm text-neutral-500 mt-0.5">
             Dynamic indicators: 🟢 Superior &nbsp;•&nbsp; 🔴 Inferior &nbsp;•&nbsp; ⚪ Equal
           </p>
         </div>
 
         {/* Global Controls */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           <button
             onClick={() => setHighlightDifferences(!highlightDifferences)}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-all ${
+            className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold border transition-all ${
               highlightDifferences
                 ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white'
                 : 'bg-white dark:bg-neutral-900 border-black/[0.1] dark:border-white/[0.1] text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white'
@@ -181,7 +181,7 @@ export const ComparisonEngineView = () => {
 
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white dark:bg-neutral-900 border border-black/[0.1] dark:border-white/[0.1] text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-all shadow-subtle"
+            className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold bg-white dark:bg-neutral-900 border border-black/[0.1] dark:border-white/[0.1] text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-all shadow-subtle"
             title="Copy shareable link"
           >
             <Share2 className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ export const ComparisonEngineView = () => {
 
           <button
             onClick={clearComparison}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white dark:bg-neutral-900 border border-black/[0.1] dark:border-white/[0.1] text-neutral-500 hover:text-black dark:hover:text-white transition-all"
+            className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold bg-white dark:bg-neutral-900 border border-black/[0.1] dark:border-white/[0.1] text-neutral-500 hover:text-black dark:hover:text-white transition-all"
             title="Clear all comparison slots"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -208,10 +208,19 @@ export const ComparisonEngineView = () => {
       )}
 
       {/* Comparison Table Container */}
-      <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-neutral-900 shadow-floating overflow-hidden">
+      <div className="rounded-2xl sm:rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-neutral-900 shadow-floating overflow-hidden">
         
+        {/* Mobile Horizontal Scroll Indicator Hint */}
+        <div className="sm:hidden px-4 py-2 bg-neutral-100 dark:bg-neutral-800/80 border-b border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-[11px] text-neutral-500 font-medium">
+          <span className="flex items-center gap-1.5">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+            Swipe table horizontally to compare
+          </span>
+          <span className="text-[10px] tracking-wider uppercase text-neutral-400">Scroll →</span>
+        </div>
+
         {/* Responsive Table Wrapper */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto touch-scroll">
           <table className="w-full text-left border-collapse">
             
             {/* Table Header: Sticky Product Cards */}
@@ -219,14 +228,14 @@ export const ComparisonEngineView = () => {
               <tr className="border-b border-black/[0.08] dark:border-white/[0.08] bg-[#f5f5f7] dark:bg-[#121214]">
                 
                 {/* Column 0: Specification Label */}
-                <th className="p-5 sm:p-6 table-sticky-col bg-[#f5f5f7] dark:bg-[#121214] border-r border-black/[0.08] dark:border-white/[0.08] min-w-[160px] sm:min-w-[200px] align-top">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 mb-2">
+                <th className="p-3.5 sm:p-6 table-sticky-col bg-[#f5f5f7] dark:bg-[#121214] border-r border-black/[0.08] dark:border-white/[0.08] min-w-[125px] sm:min-w-[190px] align-top">
+                  <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-neutral-400 mb-1 sm:mb-2">
                     Specifications
                   </div>
-                  <div className="text-base font-bold text-black dark:text-white tracking-tight">
+                  <div className="text-sm sm:text-base font-bold text-black dark:text-white tracking-tight">
                     {compareList.length} Active Slots
                   </div>
-                  <p className="text-[11px] text-neutral-500 mt-1 leading-snug">
+                  <p className="text-[10px] sm:text-[11px] text-neutral-500 mt-1 leading-snug hidden sm:block">
                     Compare up to 4 models simultaneously.
                   </p>
                 </th>
@@ -235,7 +244,7 @@ export const ComparisonEngineView = () => {
                 {compareList.map((product, idx) => (
                   <th
                     key={product.id}
-                    className="p-5 sm:p-6 border-r last:border-r-0 border-black/[0.08] dark:border-white/[0.08] min-w-[210px] sm:min-w-[250px] align-top bg-white dark:bg-neutral-900"
+                    className="p-3.5 sm:p-6 border-r last:border-r-0 border-black/[0.08] dark:border-white/[0.08] min-w-[160px] sm:min-w-[240px] align-top bg-white dark:bg-neutral-900"
                   >
                     <div className="flex flex-col justify-between h-full">
                       
@@ -279,7 +288,7 @@ export const ComparisonEngineView = () => {
 
                       {/* Product Visual & Identity */}
                       <div>
-                        <div className="w-24 h-24 mb-3 rounded-2xl overflow-hidden bg-neutral-50 dark:bg-neutral-800 p-2 border border-black/[0.04] dark:border-white/[0.04]">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 mb-2 sm:mb-3 rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-50 dark:bg-neutral-800 p-1.5 sm:p-2 border border-black/[0.04] dark:border-white/[0.04]">
                           <img
                             src={product.image}
                             alt={product.name}
@@ -288,37 +297,37 @@ export const ComparisonEngineView = () => {
                         </div>
 
                         <div className="flex items-center gap-1.5 mb-1">
-                          <span className="text-xs font-bold uppercase text-neutral-500 tracking-wider">
+                          <span className="text-[10px] sm:text-xs font-bold uppercase text-neutral-500 tracking-wider">
                             {product.brand}
                           </span>
                           {product.verified ? (
-                            <span className="inline-flex items-center text-[10px] text-neutral-400 font-medium" title="Verified specs">
+                            <span className="inline-flex items-center text-[9px] sm:text-[10px] text-neutral-400 font-medium" title="Verified specs">
                               • Verified
                             </span>
                           ) : (
-                            <span className="inline-flex items-center text-[10px] text-neutral-400 font-medium" title="Custom specs">
+                            <span className="inline-flex items-center text-[9px] sm:text-[10px] text-neutral-400 font-medium" title="Custom specs">
                               • Custom
                             </span>
                           )}
                         </div>
 
-                        <h3 className="text-sm sm:text-base font-bold text-black dark:text-white leading-snug tracking-tight">
+                        <h3 className="text-xs sm:text-base font-bold text-black dark:text-white leading-snug tracking-tight line-clamp-2">
                           {product.name}
                         </h3>
 
                         {product.modelNumber && (
-                          <div className="text-[11px] font-mono text-neutral-400 mt-0.5">
+                          <div className="text-[10px] sm:text-[11px] font-mono text-neutral-400 mt-0.5 truncate">
                             {product.modelNumber}
                           </div>
                         )}
 
-                        <div className="mt-2 text-base sm:text-lg font-bold text-black dark:text-white">
+                        <div className="mt-1.5 sm:mt-2 text-sm sm:text-lg font-bold text-black dark:text-white">
                           {formatINR(product.price, product.priceINR, product.currency)}
                         </div>
                       </div>
 
                       {/* Change / Replace button */}
-                      <div className="mt-4 pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-[11px]">
+                      <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-[10px] sm:text-[11px]">
                         <button
                           onClick={() => openSlotSelector(idx)}
                           className="font-medium text-neutral-500 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1"
@@ -330,7 +339,7 @@ export const ComparisonEngineView = () => {
                           onClick={() => navigate(`/product/${product.id}`)}
                           className="text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
                         >
-                          View Details
+                          Details
                         </button>
                       </div>
 
@@ -340,18 +349,18 @@ export const ComparisonEngineView = () => {
 
                 {/* Empty Slot Button if less than 4 */}
                 {compareList.length < 4 && (
-                  <th className="p-5 sm:p-6 border-r last:border-r-0 border-black/[0.08] dark:border-white/[0.08] min-w-[180px] sm:min-w-[220px] align-middle bg-neutral-50/50 dark:bg-neutral-900/50">
+                  <th className="p-3.5 sm:p-6 border-r last:border-r-0 border-black/[0.08] dark:border-white/[0.08] min-w-[140px] sm:min-w-[220px] align-middle bg-neutral-50/50 dark:bg-neutral-900/50">
                     <div 
                       onClick={() => openSlotSelector(compareList.length)}
-                      className="border border-dashed border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer group transition-all"
+                      className="border border-dashed border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center cursor-pointer group transition-all"
                     >
-                      <div className="w-9 h-9 rounded-full bg-neutral-100 dark:bg-neutral-800 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black text-neutral-500 flex items-center justify-center transition-colors mb-2">
+                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-neutral-100 dark:bg-neutral-800 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black text-neutral-500 flex items-center justify-center transition-colors mb-1.5 sm:mb-2">
                         <Plus className="w-4 h-4" />
                       </div>
-                      <span className="text-xs font-bold text-black dark:text-white">
+                      <span className="text-[11px] sm:text-xs font-bold text-black dark:text-white">
                         Add Slot {compareList.length + 1}
                       </span>
-                      <p className="text-[11px] text-neutral-400 mt-1">
+                      <p className="text-[10px] sm:text-[11px] text-neutral-400 mt-0.5 sm:mt-1 hidden sm:block">
                         Select another {activeCategory?.replace('-', ' ')}
                       </p>
                     </div>
