@@ -69,15 +69,17 @@ loadStore();
 export const productRepository = {
   async init() {
     loadStore();
-    // If Mongo is connected, sync if empty or outdated
+    // If Mongo Atlas is connected, sync if empty or outdated
     const status = getDbStatus();
     if (status.mongoConnected) {
       try {
         const count = await Product.countDocuments();
         if (count < 100) {
-          console.log('[ProductRepository] Seeding/Updating MongoDB with complete product catalog in INR...');
+          console.log('[ProductRepository] Seeding/Updating MongoDB Atlas with complete product catalog in INR...');
           await Product.deleteMany({});
           await Product.insertMany(localProducts);
+        } else {
+          console.log(`[ProductRepository] MongoDB Atlas has ${count} verified products loaded.`);
         }
       } catch (err) {
         console.warn('[ProductRepository] Mongo sync warning:', err.message);
@@ -86,6 +88,57 @@ export const productRepository = {
   },
 
   async getAll({ category, brand, search, minPrice, maxPrice, sort, page = 1, limit = 50 }) {
+    const status = getDbStatus();
+    if (status.mongoConnected) {
+      try {
+        const filter = {};
+        if (category && category !== 'all') {
+          filter.category = { $regex: new RegExp(`^${category}$`, 'i') };
+        }
+        if (brand && brand !== 'all') {
+          filter.brand = { $regex: new RegExp(`^${brand}$`, 'i') };
+        }
+        if (search && search.trim()) {
+          const q = search.trim();
+          filter.$or = [
+            { name: { $regex: q, $options: 'i' } },
+            { brand: { $regex: q, $options: 'i' } },
+            { modelNumber: { $regex: q, $options: 'i' } },
+            { series: { $regex: q, $options: 'i' } },
+            { category: { $regex: q, $options: 'i' } }
+          ];
+        }
+        if (minPrice !== undefined && minPrice !== '') {
+          filter.price = { ...(filter.price || {}), $gte: Number(minPrice) };
+        }
+        if (maxPrice !== undefined && maxPrice !== '') {
+          filter.price = { ...(filter.price || {}), $lte: Number(maxPrice) };
+        }
+
+        let sortOption = { popularity: -1 };
+        if (sort === 'price-low') sortOption = { price: 1 };
+        else if (sort === 'price-high') sortOption = { price: -1 };
+        else if (sort === 'rating') sortOption = { rating: -1 };
+
+        const total = await Product.countDocuments(filter);
+        const startIndex = (Number(page) - 1) * Number(limit);
+        const products = await Product.find(filter)
+          .sort(sortOption)
+          .skip(startIndex)
+          .limit(Number(limit))
+          .lean();
+
+        return {
+          products,
+          total,
+          page: Number(page),
+          totalPages: Math.ceil(total / Number(limit))
+        };
+      } catch (err) {
+        console.warn('Atlas query fallback to cache:', err.message);
+      }
+    }
+
     let items = [...localProducts];
 
     if (category && category !== 'all') {
@@ -139,6 +192,21 @@ export const productRepository = {
   },
 
   async getById(id) {
+    const status = getDbStatus();
+    if (status.mongoConnected) {
+      try {
+        const item = await Product.findOne({
+          $or: [
+            { id: id },
+            { id: { $regex: new RegExp(`^${id}$`, 'i') } }
+          ]
+        }).lean();
+        if (item) return item;
+      } catch (err) {
+        console.warn('Atlas getById fallback to cache:', err.message);
+      }
+    }
+
     const item = localProducts.find(p => p.id === id || p.id.toLowerCase() === id.toLowerCase());
     return item || null;
   },

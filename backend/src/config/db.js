@@ -10,18 +10,18 @@ let isConnectedToMongo = false;
 const fallbackStorePath = path.join(__dirname, '../data/db_store.json');
 
 export const connectDB = async () => {
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/comparator_db';
+  const uri = process.env.MONGODB_URI || 'mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/recruitment_db?retryWrites=true&w=majority';
   try {
     mongoose.set('strictQuery', false);
     const conn = await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 2000,
+      serverSelectionTimeoutMS: 10000,
     });
     isConnectedToMongo = true;
-    console.log(`[Database] MongoDB Connected successfully: ${conn.connection.host}`);
+    console.log(`[Database] MongoDB Atlas Connected successfully: ${conn.connection.host}`);
     return true;
   } catch (error) {
     isConnectedToMongo = false;
-    console.warn(`[Database] MongoDB not reachable at "${uri}".`);
+    console.warn(`[Database] MongoDB Atlas not reachable: ${error.message}`);
     console.log(`[Database] Activating High-Performance Embedded JSON Data Store seamlessly.`);
     return false;
   }
@@ -29,6 +29,7 @@ export const connectDB = async () => {
 
 export const getDbStatus = () => ({
   mongoConnected: isConnectedToMongo,
-  storageEngine: isConnectedToMongo ? 'MongoDB' : 'Embedded JSON Store (Persistent)',
+  storageEngine: isConnectedToMongo ? 'MongoDB Atlas (Cloud Cluster)' : 'Embedded JSON Store (Persistent)',
+  host: isConnectedToMongo ? (mongoose.connection?.host || 'cluster0.kvgihmd.mongodb.net') : 'Local',
   timestamp: new Date().toISOString()
 });
