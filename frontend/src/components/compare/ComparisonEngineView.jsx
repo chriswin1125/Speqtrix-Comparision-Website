@@ -381,16 +381,32 @@ export const ComparisonEngineView = () => {
                       onClick={() => toggleSection(section.sectionName)}
                       className="bg-[#f5f5f7] dark:bg-[#161618] cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-colors border-y border-black/[0.06] dark:border-white/[0.06]"
                     >
+                      {/* Column 0: Sticky Section Heading (pinned to left on mobile horizontal scroll) */}
+                      <td className="py-3 px-3.5 sm:px-6 table-sticky-col bg-[#f5f5f7] dark:bg-[#161618] border-r border-black/[0.08] dark:border-white/[0.08] min-w-[125px] sm:min-w-[190px] text-xs font-bold uppercase tracking-wider text-black dark:text-white select-none">
+                        <div className="flex items-center justify-between gap-1.5">
+                          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                            <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white shrink-0" />
+                            <span className="truncate">{section.sectionName}</span>
+                          </div>
+                          <span className="text-neutral-400 sm:hidden shrink-0">
+                            {isCollapsed ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Remaining Columns: Spanning compared product slots */}
                       <td 
-                        colSpan={compareList.length + (compareList.length < 4 ? 2 : 1)}
-                        className="py-3 px-5 sm:px-6 text-xs font-bold uppercase tracking-wider text-black dark:text-white"
+                        colSpan={compareList.length + (compareList.length < 4 ? 1 : 0)}
+                        className="py-3 px-4 sm:px-6 text-xs bg-[#f5f5f7] dark:bg-[#161618] text-neutral-500 select-none"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white" />
-                            {section.sectionName}
+                          <span className="text-[11px] font-medium text-neutral-400 hidden sm:inline">
+                            {section.rows?.length} specifications
                           </span>
-                          <span className="text-neutral-400 text-xs">
+                          <span className="text-neutral-400 text-xs ml-auto hidden sm:flex items-center gap-1 font-medium">
+                            <span className="text-[10px] uppercase font-semibold">
+                              {isCollapsed ? 'Expand' : 'Collapse'}
+                            </span>
                             {isCollapsed ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
                           </span>
                         </div>
