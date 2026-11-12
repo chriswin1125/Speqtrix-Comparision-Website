@@ -3,10 +3,14 @@
 > **"Smart specifications. Smarter decisions."**  
 > A high-performance, commercial-grade electronics discovery and multi-device benchmarking platform built with React, Node.js, Express, and MongoDB Atlas.
 
-### 🌐 Live Deployment
-- **Live Dashboard**: [https://speqtrix.vercel.app](https://speqtrix.vercel.app)
+---
+
+### 🌐 Live Deployment & Dashboard
+- **Live Platform Dashboard**: [https://speqtrix.vercel.app](https://speqtrix.vercel.app)
 - **Live Backend API**: [https://comparely-comparision-website.onrender.com](https://comparely-comparision-website.onrender.com)
-- **Database Engine**: MongoDB Atlas Cloud Cluster (`recruitment_db`)
+- **Database Engine**: MongoDB Atlas Cloud Cluster (`cluster0.kvgihmd.mongodb.net`)
+- **Connection URI**: `mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/`
+- **Catalog Scale**: 950+ verified electronics & smartphone models in Indian Rupee (**₹ INR**) format
 
 ---
 
@@ -14,10 +18,11 @@
 
 ### 1. Intelligent Multi-Product Comparison Matrix (Up to 4 Devices)
 - Compare **2, 3, or up to 4 products simultaneously** side-by-side in a responsive, sticky-header comparison matrix.
-- **Strict Category Homogeneity Rules**: Automatically locks and filters secondary product slots to match the primary product's category (e.g. comparing Smartphones with Smartphones, Laptops with Laptops, ACs with ACs).
+- **Strict Category Homogeneity Rules**: Automatically locks and filters secondary product slots to match the primary product's category (e.g. Smartphones with Smartphones, Laptops with Laptops, ACs with ACs).
 - **Slot Controls**: Swap product positions (Move Left / Move Right), remove individual products, or replace a slot with another model.
 - **Highlight Differences Toggle**: One-click filter to hide identical specifications and isolate distinguishing hardware differences.
 - **Shareable Comparison URLs**: Instant clipboard link generation preserving exact comparison states (e.g. `?ids=samsung-galaxy-s25-ultra,apple-iphone-16-pro-max`).
+- **Mobile-Optimized Horizontal Swipe**: Fluid momentum touch scrolling (`touch-scroll`), sticky spec labels, and swipe indicators for smartphones and tablets.
 
 ### 2. Category-Calibrated 3-Way Smart Indicators
 Specifications are evaluated using dynamic, domain-specific rules:
@@ -52,7 +57,7 @@ Specifications are evaluated using dynamic, domain-specific rules:
 - Participates directly in the comparison matrix with a clear, transparent **`User-Provided Specification`** badge to maintain data integrity.
 
 ### 6. Architectural Scale Across 14+ Consumer Categories
-- **Smartphones** (Apple, Samsung, Google, OnePlus, Xiaomi)
+- **Smartphones** (Apple, Samsung, Google, OnePlus, Xiaomi, Vivo, Realme, Motorola, POCO)
 - **Laptops & Workstations** (Apple MacBook Pro, Dell XPS, ASUS ROG Zephyrus, Lenovo ThinkPad)
 - **Smart TVs & OLEDs** (LG OLED evo G4, Samsung QD-OLED S95D, Sony Bravia)
 - **Air Conditioners** (Daikin 5.2 ISEER Inverter, LG AI DUAL Inverter, Voltas, Blue Star)
@@ -72,8 +77,25 @@ Specifications are evaluated using dynamic, domain-specific rules:
 |---|---|
 | **Frontend** | React 18, Vite, React Router v6, Tailwind CSS, Lucide Icons |
 | **Backend** | Node.js, Express.js (ES Modules), Mongoose, Morgan, CORS |
-| **Database** | MongoDB with seamless in-memory / JSON persistence fallback engine |
-| **Styling & UX** | Custom dark/light mode toggle, glassmorphism, responsive grid layouts |
+| **Database** | MongoDB Atlas Cloud Cluster with dynamic JSON fallback storage |
+| **Currencies** | Indian Rupee (**₹ INR**) format with realistic market valuations |
+| **Deployment** | Vercel (Frontend SPA) + Render (Backend Web Service) |
+| **Styling & UX** | Dark/Light mode toggle, Apple minimalist aesthetic, responsive touch matrix |
+
+---
+
+## ⚙️ Environment Variables
+
+### Backend (`backend/.env`)
+```env
+PORT=5000
+MONGODB_URI=mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/
+```
+
+### Frontend (`frontend/.env` or Vercel Environment Variables)
+```env
+VITE_API_URL=https://comparely-comparision-website.onrender.com/api
+```
 
 ---
 
@@ -90,7 +112,7 @@ npm install
 npm start
 ```
 *Backend runs at:* `http://localhost:5000`  
-*(Automatically connects to MongoDB if running locally or seeds embedded storage)*
+*(Automatically connects to MongoDB Atlas or seeds embedded fallback storage)*
 
 ### 2. Run Frontend Application
 ```bash
@@ -106,7 +128,7 @@ npm run dev
 
 | Endpoint | Method | Description |
 |---|---|---|
-| `/api/health` | `GET` | Health check & live database status (MongoDB / Embedded) |
+| `/api/health` | `GET` | Health check & live database status (MongoDB Atlas / Embedded) |
 | `/api/products` | `GET` | Query catalog with category, brand, search, price & sort filters |
 | `/api/products/:id` | `GET` | Get full technical specification sheet and gallery |
 | `/api/products/search` | `GET` | Live autocomplete search with fuzzy matching & fallback |
