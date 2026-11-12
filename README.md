@@ -1,7 +1,7 @@
-# COMPARELY — Premium Electronics Comparison Engine
+# SPECORA — Know More. Compare Better.
 
-> **"Compare Smarter. Choose Better."**  
-> A high-performance, commercial-grade electronics discovery and multi-device benchmarking platform built with React, Node.js, Express, and MongoDB.
+> **"Discover. Compare. Decide."**  
+> A high-performance, commercial-grade electronics discovery and multi-device benchmarking platform built with React, Node.js, Express, and MongoDB Atlas.
 
 ---
 

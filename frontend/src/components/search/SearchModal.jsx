@@ -298,7 +298,7 @@ export const SearchModal = ({ isOpen, onClose }) => {
         {/* Modal Footer */}
         <div className="p-3.5 px-5 bg-[#f5f5f7] dark:bg-[#161618] border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-xs text-neutral-400 font-medium">
           <span>Press ESC or click outside to dismiss</span>
-          <span className="font-mono text-[11px]">COMPARELY Catalog</span>
+          <span className="font-mono text-[11px]">SPECORA Catalog</span>
         </div>
       </div>
     </div>

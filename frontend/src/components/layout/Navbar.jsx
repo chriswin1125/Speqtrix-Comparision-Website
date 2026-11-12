@@ -27,7 +27,7 @@ export const Navbar = ({ onOpenSearch }) => {
             </div>
             <div>
               <span className="text-lg font-bold tracking-tight text-black dark:text-white">
-                COMPARE<span className="font-light text-neutral-400 dark:text-neutral-500">LY</span>
+                SPEC<span className="font-light text-neutral-400 dark:text-neutral-500">ORA</span>
               </span>
             </div>
           </Link>

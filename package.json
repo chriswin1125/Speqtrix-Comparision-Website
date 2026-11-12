@@ -1,7 +1,7 @@
 {
-  "name": "comparely-platform",
+  "name": "specora-platform",
   "version": "1.0.0",
-  "description": "COMPARELY — Precision Electronics Comparison Platform",
+  "description": "SPECORA — Know More. Compare Better. | Discover. Compare. Decide.",
   "type": "module",
   "scripts": {
     "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",

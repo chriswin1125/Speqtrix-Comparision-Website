@@ -37,16 +37,16 @@ export const HeroSection = ({ onOpenSearch }) => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         {/* Apple-style minimalist pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] text-xs font-medium text-neutral-700 dark:text-neutral-300 shadow-subtle mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] text-xs font-semibold tracking-wider text-neutral-800 dark:text-neutral-200 shadow-subtle mb-6 uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white" />
-          <span>Precision Hardware Benchmark Engine</span>
+          <span>Discover. Compare. Decide.</span>
         </div>
 
         {/* Hero Title with Apple Typography */}
         <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black dark:text-white leading-[1.05]">
-          Compare Smarter. <br />
+          Know More. <br />
           <span className="text-neutral-400 dark:text-neutral-500 font-light">
-            Choose Better.
+            Compare Better.
           </span>
         </h1>
 
