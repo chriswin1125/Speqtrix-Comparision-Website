@@ -3,6 +3,11 @@
 > **"Smart specifications. Smarter decisions."**  
 > A high-performance, commercial-grade electronics discovery and multi-device benchmarking platform built with React, Node.js, Express, and MongoDB Atlas.
 
+### 🌐 Live Deployment
+- **Live Dashboard**: [https://speqtrix.vercel.app](https://speqtrix.vercel.app)
+- **Live Backend API**: [https://comparely-comparision-website.onrender.com](https://comparely-comparision-website.onrender.com)
+- **Database Engine**: MongoDB Atlas Cloud Cluster (`recruitment_db`)
+
 ---
 
 ## 🌟 Key Features & Capabilities
