@@ -10,7 +10,7 @@ let isConnectedToMongo = false;
 const fallbackStorePath = path.join(__dirname, '../data/db_store.json');
 
 export const connectDB = async () => {
-  const uri = process.env.MONGODB_URI || 'mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/recruitment_db?retryWrites=true&w=majority';
+  const uri = process.env.MONGODB_URI || 'mongodb+srv://chris123:chriswin123@cluster0.kvgihmd.mongodb.net/';
   try {
     mongoose.set('strictQuery', false);
     const conn = await mongoose.connect(uri, {
