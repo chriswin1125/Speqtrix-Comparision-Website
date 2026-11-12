@@ -1,7 +1,7 @@
 {
-  "name": "specora-platform",
+  "name": "speqtrix-platform",
   "version": "1.0.0",
-  "description": "SPECORA — Know More. Compare Better. | Discover. Compare. Decide.",
+  "description": "SPEQTRIX — Smart specifications. Smarter decisions.",
   "type": "module",
   "scripts": {
     "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",

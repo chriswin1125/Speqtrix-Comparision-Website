@@ -1,6 +1,6 @@
-# SPECORA — Know More. Compare Better.
+# SPEQTRIX — Smart specifications. Smarter decisions.
 
-> **"Discover. Compare. Decide."**  
+> **"Smart specifications. Smarter decisions."**  
 > A high-performance, commercial-grade electronics discovery and multi-device benchmarking platform built with React, Node.js, Express, and MongoDB Atlas.
 
 ---

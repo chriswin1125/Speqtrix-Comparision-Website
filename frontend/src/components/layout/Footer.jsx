@@ -28,11 +28,11 @@ export const Footer = () => {
                 <Scale className="w-4 h-4" />
               </div>
               <span className="text-base font-bold text-black dark:text-white tracking-tight">
-                SPEC<span className="font-light text-neutral-400">ORA</span>
+                SPEQ<span className="font-light text-neutral-400">TRIX</span>
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-sm">
-              Discover. Compare. Decide. Precision electronics benchmarking with empirical accuracy and category-aware indicators. Know More. Compare Better.
+              Smart specifications. Smarter decisions. Precision consumer electronics benchmarking and multi-device comparison engine.
             </p>
             
             <div className="flex flex-wrap items-center gap-2 pt-2">
@@ -153,7 +153,7 @@ export const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-black/[0.08] dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
           <p>
-            © {new Date().getFullYear()} SPECORA. Designed with Apple minimalist design standards.
+            © {new Date().getFullYear()} SPEQTRIX. Designed with Apple minimalist design standards.
           </p>
           <div className="flex items-center gap-6">
             <span>Precision Data</span>

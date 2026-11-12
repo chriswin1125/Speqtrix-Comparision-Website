@@ -1,5 +1,5 @@
 /**
- * Comparison Engine for SPECORA Platform
+ * Comparison Engine for SPEQTRIX Platform
  * Evaluates 2, 3, or 4+ products of the same category with category-aware logic,
  * generates dynamic indicators (better, inferior, equal, neutral),
  * counts specification advantages, and synthesizes intelligent comparison summaries.

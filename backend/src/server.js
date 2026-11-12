@@ -25,10 +25,9 @@ app.use('/api/compare', compareRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
-    platform: 'SPECORA Electronics Comparison Platform',
+    platform: 'SPEQTRIX Electronics Comparison Platform',
     version: '1.0.0',
-    tagline: 'Know More. Compare Better.',
-    slogan: 'Discover. Compare. Decide.',
+    tagline: 'Smart specifications. Smarter decisions.',
     db: getDbStatus()
   });
 });
@@ -55,8 +54,7 @@ if (fs.existsSync(frontendDist)) {
   // Root friendly welcome if frontend is not embedded
   app.get('/', (req, res) => {
     res.json({
-      message: 'Welcome to SPECORA - Discover. Compare. Decide. (API)',
-      tagline: 'Know More. Compare Better.',
+      message: 'Welcome to SPEQTRIX - Smart specifications. Smarter decisions. (API)',
       endpoints: {
         health: '/api/health',
         products: '/api/products',
@@ -75,7 +73,7 @@ const startServer = async () => {
 
   app.listen(PORT, () => {
     console.log(`\n======================================================`);
-    console.log(`🚀 SPECORA BACKEND ENGINE ONLINE`);
+    console.log(`🚀 SPEQTRIX BACKEND ENGINE ONLINE`);
     console.log(`📡 URL: http://localhost:${PORT}`);
     console.log(`📊 Storage: ${getDbStatus().storageEngine}`);
     console.log(`======================================================\n`);
